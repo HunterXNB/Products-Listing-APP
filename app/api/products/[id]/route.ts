@@ -1,4 +1,5 @@
 import Product from "@/models/products";
+import { connectDB } from "@/utils/db";
 import { NextRequest, NextResponse } from "next/server";
 // route handler to get a specific product by id
 
@@ -8,6 +9,7 @@ export async function GET(
 ) {
   const { id } = await params;
   try {
+    await connectDB();
     const product = await Product.findById(id);
     if (product) {
       return NextResponse.json(

@@ -11,6 +11,7 @@ function Header() {
       <Button
         disabled={isPending}
         variant="contained"
+        className="disabled:cursor-wait"
         onClick={() => {
           startTransition(async () => await seedDB());
         }}

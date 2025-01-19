@@ -1,6 +1,6 @@
 "use server";
 import { revalidatePath } from "next/cache";
-import Product from "../models/products";
+import Product, { IFullProduct } from "../models/products";
 import { connectDB } from "../utils/db";
 import { faker } from "@faker-js/faker";
 const images = [
@@ -14,8 +14,9 @@ const images = [
 export async function seedDB() {
   await connectDB();
   console.log("seeding start");
+  const products: Omit<IFullProduct, "_id">[] = [];
   for (let i = 0; i < 50; i++) {
-    await Product.create({
+    products.push({
       name: faker.commerce.productName(),
       price: parseFloat(faker.commerce.price()),
       description: faker.commerce.productDescription(),
@@ -23,6 +24,7 @@ export async function seedDB() {
     });
     console.log(`Created ${i + 1} products`);
   }
+  await Product.create(products);
   console.log("seeding end");
   revalidatePath("/");
 }
