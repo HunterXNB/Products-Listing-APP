@@ -1,0 +1,21 @@
+.search-container {
+  @apply relative sm:max-w-96 max-w-60;
+}
+.search-container label {
+  color: white !important;
+}
+
+.search-container input {
+  color: white !important;
+}
+
+.search-container
+  :is(
+    fieldset,
+    :global(.MuiTextField-root):has(input:not(:focus)):hover fieldset
+  ) {
+  border-color: white;
+}
+.search-container :global(.MuiTextField-root):has(input:focus) label {
+  color: #1976d2 !important;
+}

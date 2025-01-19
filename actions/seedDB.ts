@@ -1,6 +1,7 @@
 "use server";
-import Product from "./models/products";
-import { connectDB } from "./utils/db";
+import { revalidatePath } from "next/cache";
+import Product from "../models/products";
+import { connectDB } from "../utils/db";
 import { faker } from "@faker-js/faker";
 const images = [
   "https://m.media-amazon.com/images/I/61B7dn9ZUYL._AC_SX450_.jpg",
@@ -20,7 +21,8 @@ export async function seedDB() {
       description: faker.commerce.productDescription(),
       imageUrl: images[i % images.length],
     });
-    console.log(`Created ${i} products`);
+    console.log(`Created ${i + 1} products`);
   }
   console.log("seeding end");
+  revalidatePath("/");
 }

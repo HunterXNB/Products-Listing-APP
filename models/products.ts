@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
-
-export interface IProduct {
+interface IProduct {
   name: string;
   price: number;
   description: string;
@@ -34,5 +33,7 @@ const productSchema = new mongoose.Schema<IProduct>({
 const Product =
   (mongoose.models?.product as mongoose.Model<IProduct>) ||
   mongoose.model<IProduct>("product", productSchema);
-
+export interface IFullProduct extends IProduct {
+  _id: string;
+}
 export default Product;

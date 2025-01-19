@@ -1,0 +1,10 @@
+.pagination-container ul * {
+  color: white !important;
+}
+
+.pagination-container ul button {
+  border-color: white !important;
+  &:hover {
+    background-color: #1976d2 !important;
+  }
+}

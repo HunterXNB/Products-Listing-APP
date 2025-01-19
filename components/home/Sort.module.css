@@ -1,0 +1,19 @@
+.formControl {
+  @apply sm:max-w-96 max-w-60;
+}
+
+.formControl label {
+  color: white !important;
+}
+
+.formControl:not(:has(:global(.Mui-focused))) fieldset {
+  border-color: white !important;
+}
+
+.formControl :global(.MuiSelect-select) {
+  color: white !important;
+}
+
+.formControl svg {
+  color: white !important;
+}

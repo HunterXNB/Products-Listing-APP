@@ -2,6 +2,8 @@ import Product from "@/models/products";
 import { connectDB } from "@/utils/db";
 import { NextRequest, NextResponse } from "next/server";
 const perPage = 10;
+
+// a route handler to get all products supports pagination, search and sort s
 export async function GET(req: NextRequest) {
   const searchParams = req.nextUrl.searchParams;
   const page =
